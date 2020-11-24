@@ -5,7 +5,7 @@ const uuid = require('uuid');
 
 const cwd = process.cwd();
 
-const globalConfigPath = path.join(cwd, 'globalConfig.json');
+const globalConfigPath = path.join(cwd, 'globalConfigMongo.json');
 
 module.exports = class MongoEnvironment extends NodeEnvironment {
   constructor(config) {
