@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - TB_DB_USERNAME=$TB_DB_USERNAME
+      - TB_DB_PASSWORD=$TB_DB_PASSWORD
+      - TB_DB_HOSTNAME=db
+      - TB_DB_PORT=$TB_DB_PORT
+      - TB_DB_NAME=$TB_DB_NAME
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules/
+    networks:
+      - app-network
+
+  db:
+    image: mongo
+    container_name: db
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$TB_DB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$TB_DB_PASSWORD
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+# db:
+#   image: mongo
+#   ports:
+#     - "27017:27017"
+# web:
+#   build: .
+#   volumes:
+#     - .:/usr/src/app
+#     - /usr/src/app/node_modules/
+#   ports:
+#     - "3000:3000"
+#   links:
+#     - db
+#   env_file: .env
+#   environment:
+#     - TB_DB_USERNAME=$TB_DB_USERNAME
+#     - TB_DB_PASSWORD=$TB_DB_PASSWORD
+#     - TB_DB_HOSTNAME=db
+#     - TB_DB_PORT=$TB_DB__PORT
+#     - TB_DB_NAME=$TB_DB_NAME

@@ -1,0 +1,37 @@
+{
+  "name": "tyba-api",
+  "version": "1.0.0",
+  "description": "Tyba API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon --watch src src/index.js",
+    "test": "jest src --watch",
+    "test:e2e": "jest ./__test__ --runInBand"
+  },
+  "author": "Frederick Bejarano Sanchez",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "cuid": "^2.1.8",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3"
+  },
+  "jest": {
+    "preset": "./jest-preset.cjs"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@shelf/jest-mongodb": "^1.2.3",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.13.0",
+    "faker": "^5.1.0",
+    "jest": "^26.6.3",
+    "mongodb-memory-server": "^6.9.2",
+    "nodemon": "^2.0.6"
+  }
+}
