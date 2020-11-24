@@ -16,7 +16,6 @@ function makeAuthDb ({ makeDb }) {
   }
   async function insert ({ id: _id, token }) {
     const db = await makeDb()
-    await db.collection('sessions').createIndex({ token : 1, expireAfterSeconds: 120 });
 
     const result = await db
       .collection('sessions')

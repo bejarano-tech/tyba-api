@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { transactionsDb, usersDb } from '../src/data-access/index.js'
+import { transactionsDb, usersDb, makeDb, makeConnection} from '../src/data-access/index.js'
+
 import { makeFakeUser } from './fixtures/user.js'
 import { makeFakeTransaction } from './fixtures/transaction.js'
 
@@ -20,11 +21,8 @@ describe('Tyba API', () => {
       // Throw only if the status code is greater than or equal to 500
       return status < 500
     }
-    connection = await MongoClient.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    db = await connection.db();
+    connection = await makeConnection()
+    db = await makeDb()
 
     const {name, email, password} = makeFakeUser({name: "Fred",email: 'fred@example.com', password: 'test'})
     user = await axios.post(
@@ -38,17 +36,19 @@ describe('Tyba API', () => {
     )
     const { posted } = login.data
     axios.defaults.headers.common['jwt'] = posted
+
   })
 
   afterAll(async () => {
-    await connection.close();
+    try {
+      await db.collection('users').drop();
+      await db.collection('transactions').drop();
+      await db.collection('sessions').drop();
+      return await connection.close();
+    } catch (error) {
+      console.log(error, process.env.MONGO_URL);
+    }
   })
-
-  beforeEach(async () => {
-    await db.collection('users').deleteMany({});
-    await db.collection('transactions').deleteMany({});
-    await db.collection('sessions').deleteMany({});
-  });
 
   describe('Auth', () => {
     describe('singing users', () => {

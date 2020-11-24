@@ -23,12 +23,17 @@ const TB_DB_HOSTNAME= process.env.TB_DB_HOSTNAME || "localhost"
 const url = `mongodb://${TB_DB_USERNAME}:${TB_DB_PASSWORD}@${TB_DB_HOSTNAME}:${TB_DB_PORT}/${TB_DB_NAME}?authSource=admin`;
 const dbName = process.env.TB_DB_NAME
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
+let conecction
 
 async function makeDb () {
-  if (!client.isConnected()) {
-    await client.connect()
-  }
   return client.db(dbName)
+}
+
+async function makeConnection () {
+  if (!client.isConnected()) {
+    return conecction = await client.connect()
+  }
+  return null
 }
 
 async function makeService () {
@@ -40,4 +45,4 @@ const authDb = makeAuthDb({ makeDb })
 const placesDb =  makePlacesDb({ makeService })
 const transactionsDb =  makeTransactionsDb({ makeDb })
 
-export { usersDb, authDb, placesDb, transactionsDb, makeDb }
+export { usersDb, authDb, placesDb, transactionsDb, makeDb, makeConnection }

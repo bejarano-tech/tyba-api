@@ -3,7 +3,7 @@ const MongoClient = mongodb.MongoClient
 
 let connection, db
 
-export default async function makeDb () {
+async function makeDb () {
   connection =
     connection ||
     (await MongoClient.connect(
@@ -24,4 +24,4 @@ export async function clearDb () {
   return true
 }
 
-export { connection, db }
+export { connection, db, makeDb }
