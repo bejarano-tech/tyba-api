@@ -21,7 +21,6 @@ const {
 const TB_DB_HOSTNAME= process.env.TB_DB_HOSTNAME || "localhost"
 
 const url = getDatabaseUrl()
-console.log(url)
 const dbName = getDatabaseName()
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
 let connection
@@ -43,7 +42,6 @@ async function makeService () {
 }
 
 function getDatabaseUrl(){
-  console.log(process.env.NODE_ENV)
   if (process.env.NODE_ENV !== 'test') {
     return `mongodb://${TB_DB_USERNAME}:${TB_DB_PASSWORD}@${TB_DB_HOSTNAME}:${TB_DB_PORT}/${TB_DB_NAME}?authSource=admin`;
   }else {
