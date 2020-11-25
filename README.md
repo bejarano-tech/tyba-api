@@ -110,17 +110,9 @@ Esta arquitectura tiene como base 4 componentes
 - Debugeabilidad.
 - Up un Running más rápido.
 
-# Endpoints Principales
+## Documentación y Referencia
 
-- /auth/singup - POST (name, email, password) ---> Crea un usuario y retorna el token que debe ir como header authorization en los request protegidos
-- /auth/login - POST (email, password) ---> Retorna el token que debe ir como header authorization en los request protegidos
-- /auth/logout - POST ---> Invalida el token de usuario y lo desloguea
-
-- /transactions - GET (protected)
-
-- /places - POST protected (latitude, longitude) (protected) ---> Requiere header 'x-token' con el token devuelto al hacer login
-
-- /users - GET ()(protected) ---> Retorna la lista de todos los usuarios registrados
+Link de Postman
 
 # Iniciar:
 
@@ -149,21 +141,47 @@ docker-compose up --build
 
 `Asegurese de tener corriendo una instancia de mongodb local y de configurar en el .env las variables que comienzan con TB_DB_ con sus correspondientes valores`
 
+Instale las dependencias
 ```
 npm install
+```
+
+Iniicie la aplicación
+```
+npm run start
+```
+
+## Desarrollo
+
+Instale las dependencias
+```
+npm install
+```
+
+Iniicie la aplicación en modo desarrollo
+```
 npm run dev
 ```
 
 # Pruebas:
 
 ## Test unitarios
+Instale las dependencias
+```
+npm install
+```
+Corra las pruebas
 ```
 npm run test
 ```
 
 ## Test e2e
 
-`Asegurese de tener corriendo el proyeto antes de ejecutar este comando`
+Instale las dependencias
+```
+npm install
+```
+Corra las pruebas
 ```
 npm run test:e2e
 ```
