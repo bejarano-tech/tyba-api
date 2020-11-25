@@ -3,7 +3,7 @@ import {
   getUsers,
   postUser,
   patchUser,
-  postSignup,
+  postSingup,
   postLogin,
   postRefresh,
   postLogout,
@@ -30,7 +30,7 @@ function routes(app) {
     app.get(`${apiRoot}/users`, verify, makeExpressCallback(getUsers))
 
     // Auth Routes
-    app.post(`${apiRoot}/auth/signup`, makeExpressCallback(postSignup))
+    app.post(`${apiRoot}/auth/singup`, makeExpressCallback(postSingup))
     app.post(`${apiRoot}/auth/login`, makeExpressCallback(postLogin))
     app.post(`${apiRoot}/auth/refresh`, makeExpressCallback(postRefresh))
     app.post(`${apiRoot}/auth/logout`, makeExpressCallback(postLogout))

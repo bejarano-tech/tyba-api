@@ -1,7 +1,7 @@
 import {makeFakeAuth} from '../../__test__/fixtures/auth'
 import {makeAuth} from './'
 describe('auth', () => {
-  it('must signup a user', () => {
+  it('must singup a user', () => {
     const auth = makeFakeAuth({ email: null })
     expect(() => makeAuth(auth)).toThrow('User must provide a valid a email for authentication.')
   })

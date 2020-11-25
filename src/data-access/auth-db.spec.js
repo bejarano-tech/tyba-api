@@ -9,7 +9,7 @@ describe('auth db', () => {
     authDb = makeAuthDb({ makeDb })
   })
 
-  it('signup a user', async () => {
+  it('singup a user', async () => {
   })
   it('login a user', async () => {
   })

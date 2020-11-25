@@ -39,7 +39,7 @@ describe('user', () => {
         browser: 'Brave'
       }
     }
-    // // // md5 from: http://www.miraclesalad.com/webtools/md5.php
+    // md5 from: http://www.miraclesalad.com/webtools/md5.php
     expect(makeUser(fakeUser).getHash()).toBe(
       '64af62aac85a059c4cba29803ff91438'
     )

@@ -3,7 +3,7 @@ import {makeEditUser} from './edit-user.js'
 import {makeRemoveUser} from './remove-user.js'
 import {makeListUsers} from './list-users.js'
 
-import {makeSignup} from './signup.js'
+import {makeSingup} from './singup.js'
 import {makeLogin} from './login.js'
 import {makeRefresh} from './refresh.js'
 import {makeLogout} from './logout.js'
@@ -23,7 +23,7 @@ const editUser = makeEditUser({ usersDb })
 const listUsers = makeListUsers({ usersDb })
 const removeUser = makeRemoveUser({ usersDb })
 
-const signupCase = makeSignup({ usersDb })
+const singupCase = makeSingup({ usersDb })
 const loginCase = makeLogin({ usersDb })
 const refreshCase = makeRefresh({ usersDb })
 const logoutCase = makeLogout({ authDb })
@@ -45,7 +45,7 @@ const userService = Object.freeze({
 })
 
 const authService = Object.freeze({
-  signupCase,
+  singupCase,
   loginCase,
   refreshCase,
   logoutCase,
@@ -66,7 +66,7 @@ const transactionService = Object.freeze({
 export {userService}
 export { addUser, editUser, listUsers, removeUser }
 export {authService}
-export { signupCase, loginCase, refreshCase, logoutCase, recoveryCase }
+export { singupCase, loginCase, refreshCase, logoutCase, recoveryCase }
 export {placesService}
 export {listPlaces}
 export {transactionService}

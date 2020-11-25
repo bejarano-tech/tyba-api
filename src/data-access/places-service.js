@@ -24,14 +24,6 @@ function makePlacesDb ({ makeService }) {
     }
     if(near){ paramsRequest.near = near}
     if(radius){ paramsRequest.radius = radius}
-
-      // .replace('CLIENT_ID', process.env.PLACES_CLIENT_ID)
-      // .replace('CLIENT_SECRET', process.env.PLACES_CLIENT_SECRET)
-      // .replace('VERSION', process.env.PLACES_VERSION)
-      // .replace('LOCATION', location)
-      // .replace('LIMIT', limit || 1)
-      // .replace('QUERY', query || 'coffe')}`
-
     let body
     try {
       body = await service.get(url, {params: paramsRequest})

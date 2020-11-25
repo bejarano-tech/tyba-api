@@ -16,44 +16,12 @@ describe('Tyba API', () => {
   }
   let apiRoute = process.env.TB_API_ROOT
 
-  beforeAll( async () => {
-    
-    // axios.defaults.baseURL = `${process.env.TB_BASE_URL}:${process.env.PORT}${process.env.TB_API_ROOT}`
-    // axios.defaults.headers.common['Content-Type'] = 'application/json'
-    // axios.defaults.validateStatus = function (status) {
-    //   // Throw only if the status code is greater than or equal to 500
-    //   return status < 500
-    // }
-
-    // user = makeFakeUser({name: "Fred",email: 'fred@example.com', password: 'test'})
-    // await axios.post(
-    //   '/auth/signup',
-    //   {name: user.name, email: user.email, password: user.password}
-    // )
-
-    // const login = await axios.post(
-    //   '/auth/login',
-    //   {email: user.email, password: user.password}
-    // )
-    // const { posted } = login.data
-    // axios.defaults.headers.common['jwt'] = posted
-
-  })
-
-  afterAll(async () => {
-    // try {
-    //   usersDb.remove(user)
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  })
-
   describe('Auth', () => {
     describe('singing users', () => {
       it('singup a user', async () => {
         const {name, email, password} = makeFakeUser(testData)
         const response = await request(app)
-          .post(`${apiRoute}/auth/signup`)
+          .post(`${apiRoute}/auth/singup`)
           .send({name, email, password})
           .set('Accept', 'application/json')
           .set('User-Agent', 'jest')
@@ -66,7 +34,7 @@ describe('Tyba API', () => {
       it('requires user to contain a name', async () => {
         const {name, email, password} = makeFakeUser({id: undefined, name: undefined})
         await request(app)
-        .post(`${apiRoute}/auth/signup`)
+        .post(`${apiRoute}/auth/singup`)
         .send({name, email, password})
         .set('Accept', 'application/json')
         .set('User-Agent', 'jest')
@@ -76,7 +44,7 @@ describe('Tyba API', () => {
       it('requires user to contain a valid email', async () => {
         const {name, email, password} = makeFakeUser({id: undefined, email: "test"})
         await request(app)
-        .post(`${apiRoute}/auth/signup`)
+        .post(`${apiRoute}/auth/singup`)
         .send({name, email, password})
         .set('Accept', 'application/json')
         .set('User-Agent', 'jest')
@@ -86,7 +54,7 @@ describe('Tyba API', () => {
       it('requires user to contain a email', async () => {
         const {name, email, password} = makeFakeUser({id: undefined, email: undefined})
         await request(app)
-        .post(`${apiRoute}/auth/signup`)
+        .post(`${apiRoute}/auth/singup`)
         .send({name, email, password})
         .set('Accept', 'application/json')
         .set('User-Agent', 'jest')
@@ -96,7 +64,7 @@ describe('Tyba API', () => {
       it('requires user to contain a password', async () => {
         const {name, email, password} = makeFakeUser({id: undefined, password: undefined})
         await request(app)
-        .post(`${apiRoute}/auth/signup`)
+        .post(`${apiRoute}/auth/singup`)
         .send({name, email, password})
         .set('Accept', 'application/json')
         .set('User-Agent', 'jest')
@@ -400,7 +368,7 @@ describe('Tyba API', () => {
         })
         .set('Accept', 'application/json')
         .set('User-Agent', 'jest')
-        // .set('x-token', testData.token)
+        .set('x-token', testData.token)
         .expect('Content-Type', /json/)
         .expect(200)
       });

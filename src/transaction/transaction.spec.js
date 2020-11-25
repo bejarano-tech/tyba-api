@@ -49,7 +49,7 @@ describe('transaction', () => {
         browser: 'Brave'
       }
     }
-    // // // md5 from: http://www.miraclesalad.com/webtools/md5.php
+    // md5 from: http://www.miraclesalad.com/webtools/md5.php
     expect(makeTransaction(fakeTransaction).getHash()).toBe(
       '59e4fe0fef9aa59af5fcc25b7559bce9'
     )

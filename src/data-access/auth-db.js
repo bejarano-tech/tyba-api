@@ -3,12 +3,12 @@ import { Id } from '../Id/index.js'
 
 function makeAuthDb ({ makeDb }) {
   return Object.freeze({
-    signup,
+    singup,
     login,
     recovery,
     insert
   })
-  async function signup () {
+  async function singup () {
   }
   async function login ({ id: _id = Id.makeId(), ...userInfo }) {
   }

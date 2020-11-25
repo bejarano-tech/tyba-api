@@ -34,7 +34,6 @@ describe('users db', () => {
   })
 
   it("finds a user by it's hash", async () => {
-    // expect.assertions(2)
     const fakeUserOne = makeFakeUser()
     const fakeUserTwo = makeFakeUser()
     const insertedOne = await usersDb.insert(fakeUserOne)
@@ -51,44 +50,6 @@ describe('users db', () => {
     const updated = await usersDb.update(user)
     return expect(updated.name).toBe('name changed')
   })
-
-  // it('finds all users for a post', async () => {
-  //   const userOnPostA = makeFakeUser()
-  //   const userOnPostB = makeFakeUser({ replyToId: null })
-  //   await Promise.all([userOnPostA, userOnPostB].map(usersDb.insert))
-
-  //   expect(
-  //     (await usersDb.findByPostId({
-  //       postId: userOnPostA.postId,
-  //       omitReplies: false
-  //     }))[0]
-  //   ).toEqual(userOnPostA)
-
-  //   expect(
-  //     (await usersDb.findByPostId({
-  //       postId: userOnPostA.postId,
-  //       omitReplies: true
-  //     }))[0]
-  //   ).not.toEqual(userOnPostA)
-
-  //   return expect(
-  //     (await usersDb.findByPostId({
-  //       postId: userOnPostB.postId,
-  //       omitReplies: true
-  //     }))[0]
-  //   ).toEqual(userOnPostB)
-  // })
-
-  // it('finds all replies to a user', async () => {
-  //   const user = makeFakeUser()
-  //   const firstReply = makeFakeUser({ replyToId: user.id })
-  //   const secondReply = makeFakeUser({ replyToId: user.id })
-  //   await Promise.all([user, firstReply, secondReply].map(usersDb.insert))
-  //   const found = await usersDb.findReplies({ userId: user.id })
-  //   expect(found).toContainEqual(firstReply)
-  //   expect(found).toContainEqual(secondReply)
-  //   expect(found).not.toContainEqual(user)
-  // })
 
   it('deletes a user', async () => {
     const user = makeFakeUser()

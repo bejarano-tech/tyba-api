@@ -1,10 +1,10 @@
-function makeSignup ({ signupCase }) {
-  return async function postSignup (httpRequest) {
+function makeSingup ({ singupCase }) {
+  return async function postSingup (httpRequest) {
     try {
       const { source = {}, ...userInfo } = httpRequest.body
       source.ip = httpRequest.ip
       source.browser = httpRequest.headers['User-Agent']
-      const posted = await signupCase({
+      const posted = await singupCase({
         ...userInfo,
         source
       })
@@ -33,4 +33,4 @@ function makeSignup ({ signupCase }) {
   }
 }
 
-export { makeSignup }
+export { makeSingup }

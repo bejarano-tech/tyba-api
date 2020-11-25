@@ -4,7 +4,7 @@ import {
     editUser,
     listUsers,
     removeUser,
-    signupCase,
+    singupCase,
     loginCase,
     refreshCase,
     logoutCase,
@@ -21,7 +21,7 @@ import {
   import {makePostUser} from './post-user.js'
   import {makePatchUser} from './patch-user.js'
 
-  import {makeSignup} from './post-signup.js'
+  import {makeSingup} from './post-singup.js'
   import {makeLogin} from './post-login.js'
   import {makeRefresh} from './post-refresh.js'
   import {makeLogout} from './post-logout.js'
@@ -41,7 +41,7 @@ import {
   const postUser = makePostUser({ addUser })
   const patchUser = makePatchUser({ editUser })
 
-  const postSignup = makeSignup({ signupCase })
+  const postSingup = makeSingup({ singupCase })
   const postLogin = makeLogin({ loginCase })
   const postRefresh = makeRefresh({ refreshCase })
   const postLogout = makeLogout({ logoutCase })
@@ -60,7 +60,7 @@ import {
     notFound,
     postUser,
     patchUser,
-    postSignup,
+    postSingup,
     postLogin,
     postRefresh,
     postLogout,
@@ -79,7 +79,7 @@ import {
     notFound,
     postUser,
     patchUser,
-    postSignup,
+    postSingup,
     postLogin,
     postRefresh,
     postLogout,

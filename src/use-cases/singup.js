@@ -1,7 +1,7 @@
 import { makeUser } from '../user/index.js'
 
-function makeSignup ({ usersDb }) {
-    return async function signup (userInfo) {
+function makeSingup ({ usersDb }) {
+    return async function singup (userInfo) {
       if (!userInfo.password) {
         throw new Error('User must have a password.')
       }
@@ -27,4 +27,4 @@ function makeSignup ({ usersDb }) {
     }
   }
   
-  export {makeSignup}
+  export {makeSingup}

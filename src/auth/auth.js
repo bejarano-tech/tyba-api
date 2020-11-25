@@ -16,13 +16,7 @@ function buildMakeAuth ({ Id }) {
         throw new Error('User must provide a valid a valid password authentication.')
       }
       // TODO VALIDATE EMAIL
-      // if (!isValidEmail(email)) {
-      //   throw new Error('If supplied. User must contain a valid email.')
-      // }    
       // TODO VALIDATE PASSWORD
-      // if (!isValidPassword(password)) {
-      //   throw new Error('If supplied. User must contain a valid password.')
-      // }    
       let hash
   
       return Object.freeze({

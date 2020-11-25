@@ -14,21 +14,3 @@ function config(app) {
 }
 
 export default config
-
-
-
-
-
-
-// express = require 'express'
-// config = (app) ->
-
-//   # Configuration
-//   app.set 'port', process.env.PORT || 3000
-//   app.use express.favicon()
-//   app.use express.methodOverride() # Allows the use of HTTP 'DELETE' AND 'PUT' methods.
-//   app.use express.logger()
-//   app.use app.router
-//   app.use express.errorHandler()
-
-// module.exports = config

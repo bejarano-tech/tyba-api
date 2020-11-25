@@ -33,17 +33,6 @@ describe('transactions db', () => {
     expect(found).toEqual(transaction)
   })
 
-  // it("finds a transaction by it's hash", async () => {
-  //   // expect.assertions(2)
-  //   const fakeTransactionOne = makeFakeTransaction()
-  //   const fakeTransactionTwo = makeFakeTransaction()
-  //   const insertedOne = await transactionsDb.insert(fakeTransactionOne)
-  //   const insertedTwo = await transactionsDb.insert(fakeTransactionTwo)
-
-  //   expect(await transactionsDb.findByHash(fakeTransactionOne)).toEqual(insertedOne)
-  //   expect(await transactionsDb.findByHash(fakeTransactionTwo)).toEqual(insertedTwo)
-  // })
-
   it('updates a transaction', async () => {
     const transaction = makeFakeTransaction()
     await transactionsDb.insert(transaction)
@@ -51,44 +40,6 @@ describe('transactions db', () => {
     const updated = await transactionsDb.update(transaction)
     return expect(updated.from).toBe('from-id-test')
   })
-
-  // it('finds all transactions for a post', async () => {
-  //   const transactionOnPostA = makeFakeTransaction()
-  //   const transactionOnPostB = makeFakeTransaction({ replyToId: null })
-  //   await Promise.all([transactionOnPostA, transactionOnPostB].map(transactionsDb.insert))
-
-  //   expect(
-  //     (await transactionsDb.findByPostId({
-  //       postId: transactionOnPostA.postId,
-  //       omitReplies: false
-  //     }))[0]
-  //   ).toEqual(transactionOnPostA)
-
-  //   expect(
-  //     (await transactionsDb.findByPostId({
-  //       postId: transactionOnPostA.postId,
-  //       omitReplies: true
-  //     }))[0]
-  //   ).not.toEqual(transactionOnPostA)
-
-  //   return expect(
-  //     (await transactionsDb.findByPostId({
-  //       postId: transactionOnPostB.postId,
-  //       omitReplies: true
-  //     }))[0]
-  //   ).toEqual(transactionOnPostB)
-  // })
-
-  // it('finds all replies to a transaction', async () => {
-  //   const transaction = makeFakeTransaction()
-  //   const firstReply = makeFakeTransaction({ replyToId: transaction.id })
-  //   const secondReply = makeFakeTransaction({ replyToId: transaction.id })
-  //   await Promise.all([transaction, firstReply, secondReply].map(transactionsDb.insert))
-  //   const found = await transactionsDb.findReplies({ transactionId: transaction.id })
-  //   expect(found).toContainEqual(firstReply)
-  //   expect(found).toContainEqual(secondReply)
-  //   expect(found).not.toContainEqual(transaction)
-  // })
 
   it('deletes a transaction', async () => {
     const transaction = makeFakeTransaction()
