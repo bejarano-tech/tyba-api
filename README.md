@@ -112,7 +112,10 @@ Esta arquitectura tiene como base 4 componentes
 
 ## Documentación y Referencia
 
-Link de Postman
+Si tiene postman instalado puede importar la collección adjunta en la raíz del código fuente.
+
+Si quiere ver online vaya a 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1416bc7feac774ab4d80)
 
 # Iniciar:
 
@@ -185,3 +188,13 @@ Corra las pruebas
 ```
 npm run test:e2e
 ```
+
+## Test de integración con Postman
+Puede realizar las pruebas con una la colección de Postman siguiendo estos pasos:
+    - Instalar Postman
+    - Siga los pasos para iniciar la aplicación
+    - Importe la colección de Postman
+    - En postman Ingresar al Runner
+    - Seleccionar de la lista derecha la collección importada Tyba Api.
+    - Seleccionar el ambiente desarrollo
+    - Iniciar el Runner.
