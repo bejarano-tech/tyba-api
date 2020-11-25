@@ -65,7 +65,7 @@ La arquitectura se basa en la implemtación orientada a microservicios de la Arq
 
 - /transactions - GET (protected)
 
-- /places - POST protected (latitude, longitude) (protected) ---> Requiere header 'jwt' con el token devuelto al hacer login
+- /places - POST protected (latitude, longitude) (protected) ---> Requiere header 'x-token' con el token devuelto al hacer login
 
 - /users - GET ()(protected) ---> Retorna la lista de todos los usuarios registrados
 

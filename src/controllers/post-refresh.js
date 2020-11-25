@@ -5,7 +5,7 @@ function makeRefresh ({ refreshCase }) {
       source.ip = httpRequest.ip
       source.browser = httpRequest.headers['User-Agent']
       const refreshed = await refreshCase({
-        accessToken: httpRequest.headers['jwt'],
+        accessToken: httpRequest.headers['x-token'],
         source
       })
 

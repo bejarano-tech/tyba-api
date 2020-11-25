@@ -16,7 +16,7 @@
       "src/index"
     ],
     "env": {
-      "NODE_ENV": "test",
+      "NODE_ENV": "development",
       "NODE_OPTIONS": "--experimental-vm-modules npx jest"
     },
     "ext": "js,json"

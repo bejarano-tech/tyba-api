@@ -7,7 +7,7 @@ function makeLogin ({ usersDb }) {
       }
 
       if (!password) {
-        throw new Error('Password not privided')
+        throw new Error('Password not provided')
       }
 
       const exists = await usersDb.findByEmail({ email })

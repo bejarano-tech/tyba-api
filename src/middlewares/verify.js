@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 
 function verify (req, res, next){
-    let accessToken = req.headers.jwt
+    let accessToken = req.headers['x-token']
     //if there is no token stored in cookies, the request is unauthorized
     if (!accessToken){
         return res.status(403).send({ error: 'Not authenticated.' })

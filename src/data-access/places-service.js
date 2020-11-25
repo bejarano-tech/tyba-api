@@ -40,6 +40,7 @@ function makePlacesDb ({ makeService }) {
       }))
     } catch (error) {
       console.log('Error', error.message);
+      return null
     }
   }
 }

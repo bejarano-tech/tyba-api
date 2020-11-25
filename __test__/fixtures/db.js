@@ -21,6 +21,8 @@ export async function closeDb () {
 
 export async function clearDb () {
   await db.collection('users').deleteMany({})
+  await db.collection('transactions').deleteMany({})
+  await db.collection('sessions').deleteMany({})
   return true
 }
 

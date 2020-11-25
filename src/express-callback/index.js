@@ -11,7 +11,7 @@ function makeExpressCallback (controller) {
           'Content-Type': req.get('Content-Type'),
           Referer: req.get('referer'),
           'User-Agent': req.get('User-Agent'),
-          'jwt': req.get('jwt')
+          'x-token': req.get('x-token')
         }
       }
       controller(httpRequest)

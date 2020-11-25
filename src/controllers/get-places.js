@@ -11,6 +11,13 @@ function makeGetPlaces ({ listPlaces }) {
           radius: httpRequest.query.radius || 50,
           near: httpRequest.query.near || undefined
         })
+        if(!places) return {
+          headers,
+          statusCode: 404,
+          body: {
+            error: "Places near to you not found"
+          }
+        }
         return {
           headers,
           statusCode: 200,

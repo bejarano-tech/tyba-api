@@ -5,7 +5,7 @@ function makeLogout ({ logoutCase }) {
       }
       try {
         const postUsers = await logoutCase({
-          token: httpRequest.headers['jwt']
+          token: httpRequest.headers['x-token']
         })
         return {
           headers,
