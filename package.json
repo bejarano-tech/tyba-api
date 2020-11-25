@@ -7,8 +7,8 @@
   "scripts": {
     "db": "node ./db/index.js",
     "start": "npm run db && node ./src/index.js",
-    "dev": "nodemon --watch src src/index.js",
-    "test": "jest src --watch",
+    "dev": "npm run db && nodemon --watch src src/index.js",
+    "test": "jest src --watch --detectOpenHandles",
     "test:e2e": "jest ./__test__ --runInBand"
   },
   "author": "Frederick Bejarano Sanchez",

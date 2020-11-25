@@ -64,7 +64,8 @@ typings/
 *.tgz
 
 # dotenv environment variables file
+.env.test
 .env
 
 #in memory mongo
-globalConfigMongo.json
+globalConfig.json

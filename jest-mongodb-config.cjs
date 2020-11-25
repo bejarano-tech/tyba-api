@@ -1,6 +1,8 @@
 module.exports = {
   mongodbMemoryServerOptions: {
-    instance: {},
+    instance: {
+      dbName: 'jest'
+    },
     autoStart: false
   }
 };

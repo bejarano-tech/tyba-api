@@ -8,7 +8,7 @@ async function makeDb () {
     connection ||
     (await MongoClient.connect(
       global.__MONGO_URI__,
-      { useNewUrlParser: true }
+      { useNewUrlParser: true, useUnifiedTopology: true }
     ))
   db = db || (await connection.db(global.__MONGO_DB_NAME__))
   return db

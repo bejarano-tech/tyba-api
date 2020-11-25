@@ -4,7 +4,6 @@ function makeSignup ({ signupCase }) {
       const { source = {}, ...userInfo } = httpRequest.body
       source.ip = httpRequest.ip
       source.browser = httpRequest.headers['User-Agent']
-      console.log(userInfo)
       const posted = await signupCase({
         ...userInfo,
         source

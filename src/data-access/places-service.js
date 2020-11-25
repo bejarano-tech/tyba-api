@@ -22,7 +22,6 @@ function makePlacesDb ({ makeService }) {
       limit: limit,
       radius: radius
     }
-    console.log("Params: ",paramsRequest)
     if(near){ paramsRequest.near = near}
     if(radius){ paramsRequest.radius = radius}
 

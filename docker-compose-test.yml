@@ -4,6 +4,10 @@ services:
   nodejs:
     build: .
     container_name: nodejs
+    depends_on: 
+      - "db"
+    env_file: 
+     - '.env.test'
     environment:
       - TB_DB_USERNAME=$TB_DB_USERNAME
       - TB_DB_PASSWORD=$TB_DB_PASSWORD
@@ -16,7 +20,21 @@ services:
       - /usr/src/app/node_modules/
     command: > 
       bash -c "npm install
-      && npm run db &&
-      && npm run start"
+      && npm run start
+      && npm run test"
     ports:
       - ${PORT}:${PORT}
+
+  db:
+    image: mongo
+    container_name: db
+    ports:
+      - ${TB_DB_PORT}:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$TB_DB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$TB_DB_PASSWORD
+    volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:

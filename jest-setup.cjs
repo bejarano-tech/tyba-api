@@ -5,7 +5,7 @@ const cwd = process.cwd();
 
 const mongod = new MongodbMemoryServer.default(getMongodbMemoryOptions());
 
-const globalConfigPath = join(cwd, 'globalConfigMongo.json');
+const globalConfigPath = join(cwd, 'globalConfig.json');
 
 module.exports = async () => {
   if (!mongod.isRunning) {

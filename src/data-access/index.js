@@ -26,14 +26,15 @@ const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology:
 let conecction
 
 async function makeDb () {
+  await makeConnection ()
   return client.db(dbName)
 }
 
 async function makeConnection () {
   if (!client.isConnected()) {
-    return conecction = await client.connect()
+    conecction = await client.connect()
   }
-  return null
+  return conecction
 }
 
 async function makeService () {

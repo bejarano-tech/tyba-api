@@ -1,38 +1,32 @@
 import axios from 'axios'
-import { transactionsDb, usersDb, makeDb, makeConnection} from '../src/data-access/index.js'
+import { transactionsDb, usersDb} from '../src/data-access/index.js'
 
 import { makeFakeUser } from './fixtures/user.js'
 import { makeFakeTransaction } from './fixtures/transaction.js'
-
-import {MongoClient} from 'mongodb'
 
 import dotenv from 'dotenv'
 dotenv.config()
 
 describe('Tyba API', () => {
-  let connection
-  let db
 
   let user
   beforeAll( async () => {
-    axios.defaults.baseURL = process.env.TB_BASE_URL + process.env.TB_API_ROOT
+    axios.defaults.baseURL = `${process.env.TB_BASE_URL}:${process.env.PORT}${process.env.TB_API_ROOT}`
     axios.defaults.headers.common['Content-Type'] = 'application/json'
     axios.defaults.validateStatus = function (status) {
       // Throw only if the status code is greater than or equal to 500
       return status < 500
     }
-    connection = await makeConnection()
-    db = await makeDb()
 
-    const {name, email, password} = makeFakeUser({name: "Fred",email: 'fred@example.com', password: 'test'})
-    user = await axios.post(
+    user = makeFakeUser({name: "Fred",email: 'fred@example.com', password: 'test'})
+    await axios.post(
       '/auth/signup',
-      {name, email, password}
+      {name: user.name, email: user.email, password: user.password}
     )
 
     const login = await axios.post(
       '/auth/login',
-      {email: user.data.posted.email, password: "test"}
+      {email: user.email, password: user.password}
     )
     const { posted } = login.data
     axios.defaults.headers.common['jwt'] = posted
@@ -41,12 +35,9 @@ describe('Tyba API', () => {
 
   afterAll(async () => {
     try {
-      await db.collection('users').drop();
-      await db.collection('transactions').drop();
-      await db.collection('sessions').drop();
-      return await connection.close();
+      usersDb.remove(user)
     } catch (error) {
-      console.log(error, process.env.MONGO_URL);
+      console.log(error);
     }
   })
 
@@ -97,7 +88,7 @@ describe('Tyba API', () => {
       it('login a user', async () => {
         const response = await axios.post(
           '/auth/login',
-          {email: user.data.posted.email, password: "test"}
+          {email: user.email, password: "test"}
         )
         expect(response.status).toBe(201)
         const { posted } = response.data
@@ -124,10 +115,10 @@ describe('Tyba API', () => {
       it('it must be a valid token', async () => {
         const response = await axios.post(
           '/auth/login',
-          {email: user.data.posted.email, password: "test"}
+          {email: user.email, password: "test"}
         )
         const { posted } = response.data
-        expect(response.data.posted).toBeDefined()
+        expect(response).toBeDefined()
       });
     })
     describe('logout users', () => {

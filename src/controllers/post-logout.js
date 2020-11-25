@@ -7,7 +7,6 @@ function makeLogout ({ logoutCase }) {
         const postUsers = await logoutCase({
           token: httpRequest.headers['jwt']
         })
-        console.log("Post Logout", postUsers);
         return {
           headers,
           statusCode: 200,
