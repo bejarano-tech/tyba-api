@@ -136,11 +136,20 @@ cp .env.example .env
 
 Remplace los valores en blanco con las correspondientes credenciales enviadas en el correo de la prueba
 
-## Iniciar CON Docker Compose:
+## Iniciar CON Docker Compose Development:
 
 ```
-docker-compose up --build
+docker-compose up -f docker-compose-dev.yml --build
 ```
+
+
+## Iniciar CON Docker Compose Prod:
+
+`Asegurese de tener corriendo una instancia de mongodb y de configurar en el .env las variables que comienzan con TB_DB_ con sus correspondientes valores`
+```
+docker-compose up -f docker-compose.yml --build
+```
+
 
 ## Iniciar SIN Docker Compose:
 
