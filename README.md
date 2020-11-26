@@ -100,10 +100,20 @@ Esta arquitectura tiene como base 4 componentes
     - Express
     - MongoDb
     - Jest
+    - Axios
+    - BCrypt
+    - CUID:
+    - JsonWebtoken
+    - MongoDB
 
 ## Ventajas
 
 - Muy Resiliente a cambios: Es decir, a medida que las cosas cambian al rededor del mundo, el código puede sobrevivir, adapdarse y cambiar con el mundo.
+- Independientes de Frameworks. No estan acopladas a librerias, lo que permite utilizar estas librerías como herramientas que son fácilmente sustituibles.
+- Testables. las reglas de negocio son fácilmente testables sin utilizar la interfaz de usuario, base de datos, servidor web.
+- Independientes de la interfaz de usuario. La interfaz de usuario es fácilmente modificable.
+- Independientes de la base de datos. Es fácil sustituir una base de datos por otra sin afectar a las reglas de negocio.
+- El dominio es la parte más importante la capa de dominio es la más importante y de la que dependen todas las demás pero el dominio no depende de ninguna. ¿como consigue el dominio comunicarse con las demás capas sin depender de ellas?, haciendo uso del principio SOLID de Inversión de dependencia. Escribí hace tiempo un artículo profundizando en este princpio.
 - Permite desacoplar las capas y manejar una responsabilidad por función.
 - Gestión de pruebas más fácil y eficiente.
 - Escalabilidad.
@@ -209,3 +219,12 @@ Puede realizar las pruebas con una la colección de Postman siguiendo estos paso
     - Seleccionar de la lista derecha la collección importada Tyba Api.
     - Seleccionar el ambiente desarrollo
     - Iniciar el Runner.
+
+## Seguridad
+Esta API está asegurada usando Json Web Tokens.
+
+Un Token header debe estar en el request para prevenir errores 403 No Authorizado.
+
+Previamente haga una petición a /api/auth/login endpoint con sus credenciales y la respusta contiene un token temporal para usar en las siguientes peticiones.
+
+Cuando el token ha expirado el servidor responderá 403 no autorizado y debe hacer otra petición a login con los credenciales.
