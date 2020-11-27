@@ -149,7 +149,7 @@ Remplace los valores en blanco con las correspondientes credenciales enviadas en
 ## Iniciar CON Docker Compose Development:
 
 ```
-docker-compose up -f docker-compose-dev.yml --build
+docker-compose -f docker-compose-dev.yml up --build
 ```
 
 
@@ -157,7 +157,7 @@ docker-compose up -f docker-compose-dev.yml --build
 
 `Asegurese de tener corriendo una instancia de mongodb y de configurar en el .env las variables que comienzan con TB_DB_ con sus correspondientes valores`
 ```
-docker-compose up -f docker-compose.yml --build
+docker-compose -f docker-compose.yml up --build
 ```
 
 
