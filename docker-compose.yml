@@ -16,7 +16,7 @@ services:
       - /usr/src/app/node_modules/
     command: > 
       bash -c "npm install
-      && npm run db &&
+      && npm run db
       && npm run start"
     ports:
       - ${PORT}:${PORT}

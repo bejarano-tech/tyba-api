@@ -17,7 +17,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules/
     command: > 
-      bash -c "npm install node-gyp bcrypt -g
+      bash -c "npm install
       && npm run db
       && npm run dev"
     ports:
